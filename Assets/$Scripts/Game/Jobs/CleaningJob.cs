@@ -15,8 +15,8 @@ public class CleaningJob : Job
         }
     }
 
-    private Item_Cleanable itemToClean;                         // item_cleanable script ref
-    public Item_Cleanable getItemToClean                         
+    private CleanableItem itemToClean;                         // item_cleanable script ref
+    public CleanableItem getItemToClean                         
     {
         get
         {
@@ -24,7 +24,7 @@ public class CleaningJob : Job
         }
     }
 
-    public CleaningJob(GameObject itemToCleanGameobject, Item_Cleanable itemToClean) : base(itemToCleanGameobject.transform.position)
+    public CleaningJob(GameObject itemToCleanGameobject, CleanableItem itemToClean) : base(itemToCleanGameobject.transform.position)
     {
         this.itemToClean = itemToClean;
         this.itemToCleanGameobject = itemToCleanGameobject;

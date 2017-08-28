@@ -14,8 +14,8 @@ public class HaulingJob : Job
             return endLoaction;
         }
     }
-    private Item_Haulable itemToHaul;                                                       // class ref
-    public Item_Haulable getItemToHaul
+    private HaulableItem itemToHaul;                                                       // class ref
+    public HaulableItem getItemToHaul
     {
         get
         {
@@ -25,7 +25,7 @@ public class HaulingJob : Job
 
     private GameObject itemToHaulGamobject;                                                 // gameobject ref
 
-    public HaulingJob(GameObject itemToHaulGamobject, Item_Haulable itemToHaul) : base(itemToHaulGamobject.transform.position)
+    public HaulingJob(GameObject itemToHaulGamobject, HaulableItem itemToHaul) : base(itemToHaulGamobject.transform.position)
     {
         this.itemToHaulGamobject = itemToHaulGamobject;
         this.itemToHaul = itemToHaul;

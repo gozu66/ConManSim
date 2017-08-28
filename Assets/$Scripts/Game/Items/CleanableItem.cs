@@ -4,9 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Cleanable : Item_Interactable
+public class CleanableItem : Item
 {
-    public Item_Cleanable(GameObject cleanableGameobject) : base(cleanableGameobject)
+    public CleanableItem(GameObject cleanableGameobject) : base(cleanableGameobject)
     {
     }
 }

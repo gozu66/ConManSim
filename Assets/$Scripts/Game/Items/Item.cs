@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
     
-public class Item_Interactable                                                              //All items will inherit from here
+public class Item                                                              //All items will inherit from here
 {
     protected GameObject itemGameobject;                                                    //Gameobject reference
     public GameObject getItemGameobject
@@ -16,11 +16,11 @@ public class Item_Interactable                                                  
         }
     }
 
-    protected Item itemInstance;                                    
+    protected GameobjectItem itemInstance;                                    
 
-    public Item_Interactable(GameObject itemGameobject)
+    public Item(GameObject itemGameobject)
     {
         this.itemGameobject = itemGameobject;                                               //set Gamobject ref
-        itemGameobject.GetComponent<Item>().getItemInteractableInstance = this;             //set Gameobject's ref to this
+        itemGameobject.GetComponent<GameobjectItem>().getItemInteractableInstance = this;             //set Gameobject's ref to this
     }
 }

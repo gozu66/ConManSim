@@ -25,7 +25,7 @@ public enum PawnType
 };
 
 
-public class Pawn : MonoBehaviour
+public class GameobjectPawn : MonoBehaviour
 {
     public bool debugInfo;                                                                          //[DEBUG]
  
@@ -33,8 +33,8 @@ public class Pawn : MonoBehaviour
 
     public PawnType pawnType;                                                                       //pawn curren type
 
-    private Pawn_UtilityHandler utilityHandler;                                                     //script ref
-    public Pawn_UtilityHandler getUtilityHandler
+    private UtilityHandler utilityHandler;                                                     //script ref
+    public UtilityHandler getUtilityHandler
     {
         get
         {
@@ -42,8 +42,8 @@ public class Pawn : MonoBehaviour
         }
     }
 
-    private Pawn_JobHandler jobHandler;                                                             //script ref
-    public Pawn_JobHandler getJobHandler
+    private JobHandler jobHandler;                                                             //script ref
+    public JobHandler getJobHandler
     {
         get
         {
@@ -82,22 +82,22 @@ public class Pawn : MonoBehaviour
 
     private void Awake()                                            // on awake
     {                                                               
-        utilityHandler = new Pawn_UtilityHandler(this);             // create util handler
+        utilityHandler = new UtilityHandler(this);             // create util handler
         switch(pawnType)                                            //swith on type
         {
             case PawnType.Hauler:
-                jobHandler = new Pawn_HaulingJobHandler(this);      //assign correct job handler
+                jobHandler = new JobHandlerHauling(this);      //assign correct job handler
                 break;
 
             case PawnType.Cleaner:
-                jobHandler = new Pawn_CleaningJobHandler(this);     //
+                jobHandler = new JobHandlerCleaning(this);     //
                 break;
 
             case PawnType.Scientist:
                 break;
 
             case PawnType.Builder:
-                jobHandler = new Pawn_ConstructionJobHandler(this); //
+                jobHandler = new JobHandlerConstruction(this); //
                 break;
         }
     }
@@ -127,8 +127,11 @@ public class Pawn : MonoBehaviour
     int targetIndex = 0;                                            //Target Index global for [DEBUG] purposes only [TEMP]
     private IEnumerator MoveAlongPath(Action callback)
     {
-        if(currentPath.Length <= 0) { goto FinishPath; }            //if path goal is alredy occupied by pawn, finish path
-
+        if (currentPath.Length <= 0)                                //if path goal is alredy occupied by pawn, finish path
+        {
+            if (callback != null) { callback(); }                       //if callback, call back
+            yield break;
+        }
         int speed = 5;                                              //[SQL]
         Vector3 currentWaypoint = currentPath[0];                   
         targetIndex = 0;
@@ -139,7 +142,7 @@ public class Pawn : MonoBehaviour
                 targetIndex++;                                      //add to index
                 if (targetIndex >= currentPath.Length)              //if we are at end of path nodes
                 {
-                    goto FinishPath;                                //finish path   
+                    break;                                          //finish path   
                 }
                 currentWaypoint = currentPath[targetIndex];         //otherwise, set next waypoint
             }                                                       //move to next waypoint
@@ -148,7 +151,6 @@ public class Pawn : MonoBehaviour
 
             yield return null;                                      //yield next frame
         }
-        FinishPath:
         if (callback != null) { callback(); }                       //if callback, call back
     }
 

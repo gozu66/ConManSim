@@ -4,13 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pawn_HaulingJobHandler : Pawn_JobHandler
+public class JobHandlerHauling : JobHandler
 {
-    private Pawn owner;
+    private GameobjectPawn owner;
     private HaulingJob currHaulingJob;
     private sbyte index = 0;
 
-    public Pawn_HaulingJobHandler(Pawn owner) : base(owner)
+    public JobHandlerHauling(GameobjectPawn owner) : base(owner)
     {
         this.owner = owner;
     }

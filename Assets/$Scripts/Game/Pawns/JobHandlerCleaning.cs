@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pawn_CleaningJobHandler : Pawn_JobHandler
+public class JobHandlerCleaning : JobHandler
 {
-    Pawn owner;
+    GameobjectPawn owner;
     private CleaningJob currCleaningJob;
 
-    public Pawn_CleaningJobHandler(Pawn owner) : base(owner)
+    public JobHandlerCleaning(GameobjectPawn owner) : base(owner)
     {
         this.owner = owner;
     }

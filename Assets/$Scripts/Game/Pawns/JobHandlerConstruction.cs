@@ -5,13 +5,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pawn_ConstructionJobHandler : Pawn_JobHandler
+public class JobHandlerConstruction : JobHandler
 {
-    private Pawn owner;
+    private GameobjectPawn owner;
 
     private ConstructionJob currConstJob;
 
-    public Pawn_ConstructionJobHandler(Pawn owner) : base(owner)
+    public JobHandlerConstruction(GameobjectPawn owner) : base(owner)
     {
         this.owner = owner;
     }
@@ -55,7 +55,7 @@ public class Pawn_ConstructionJobHandler : Pawn_JobHandler
             GameObject newWallgo = new GameObject();                                //create Gameobject                    
             newWallgo.AddComponent<SpriteRenderer>();                               //add sprite renderer
             newWallgo.transform.Rotate(-90, 0, 0);                                  //Rotate upwards
-            Structural_Wall newWall = newWallgo.AddComponent<Structural_Wall>();    //add wal script
+            StructuralWall newWall = newWallgo.AddComponent<StructuralWall>();    //add wal script
             newWall.SetWallMaterial(currConstJob.getSetMaterialForJob.mat);         //call set materiual method on wall
             newWallgo.transform.position = TileManager._instance.getTileFromWorldPoint(currConstJob.getJobsite).gameObject.transform.position;
                                                                                     //snap to position of tile it sits on

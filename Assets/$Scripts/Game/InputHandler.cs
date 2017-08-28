@@ -127,7 +127,7 @@ public class InputHandler : MonoBehaviour
             }
         }
 
-        GUI_Manager._instance.currenTileList = tilesToBuildOn.ToArray();
+        GUIManager._instance.currenTileList = tilesToBuildOn.ToArray();
         callBack();
 
     }

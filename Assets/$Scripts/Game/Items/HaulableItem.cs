@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Haulable : Item_Interactable                                              //All haulable items will inherit from here
+public class HaulableItem : Item                                              //All haulable items will inherit from here
 {
     private Vector3 bestLocation;                                                           //Best Location to haul this object to
     public Vector3 getBestLocation
@@ -15,7 +15,7 @@ public class Item_Haulable : Item_Interactable                                  
         }
     }
 
-    public Item_Haulable(GameObject haulableGameobject) : base(haulableGameobject)
+    public HaulableItem(GameObject haulableGameobject) : base(haulableGameobject)
     {
         bestLocation = GetBestLocation();
     }

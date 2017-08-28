@@ -8,9 +8,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pawn_UtilityHandler
+public class UtilityHandler
 {
-    Pawn owner;                                                                                     //Pawn which owns this utility handler
+    GameobjectPawn owner;                                                                                     //Pawn which owns this utility handler
     private sbyte energy;                                                                           //current energy amout
     public sbyte getEnergy
     {
@@ -33,7 +33,7 @@ public class Pawn_UtilityHandler
         }
     }
 
-    public Pawn_UtilityHandler(Pawn owner)                                                          //Constructor
+    public UtilityHandler(GameobjectPawn owner)                                                          //Constructor
     {                                                                                               //sets or calculates variables
         this.owner = owner;
         float t = (maxEnergy / 2) + Random.Range(0, 50);

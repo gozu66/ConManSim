@@ -8,11 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pawn_JobHandler
+public class JobHandler
 {
-    Pawn owner;
+    GameobjectPawn owner;
 
-    public Pawn_JobHandler(Pawn owner)
+    public JobHandler(GameobjectPawn owner)
     {
         this.owner = owner;                                                                             //set owner pawn
     }

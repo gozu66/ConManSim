@@ -31,8 +31,8 @@ public class ConstructionJob : Job
         }
     }
 
-    private Item_Material materialForJob;                       //item material class ref
-    public Item_Material getSetMaterialForJob
+    private MaterialItem materialForJob;                       //item material class ref
+    public MaterialItem getSetMaterialForJob
     {
         get
         {
@@ -50,7 +50,7 @@ public class ConstructionJob : Job
             
     }
 
-    public ConstructionJob(Vector3 jobSite, MaterialType matType, Item_Material mat, ConstrucatbleItem itemToConstruct) : base(jobSite)
+    public ConstructionJob(Vector3 jobSite, MaterialType matType, MaterialItem mat, ConstrucatbleItem itemToConstruct) : base(jobSite)
     {
         this.jobSite = jobSite;                                     //[TEMP HARD CODED JOBSITE]
         this.matType = matType;

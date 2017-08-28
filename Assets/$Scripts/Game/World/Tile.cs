@@ -7,8 +7,8 @@ public class Tile : MonoBehaviour
     private int coordX, coordY;
     
     public bool isWall, isWalkable;
-    private Structural_Wall wall;
-    public Structural_Wall getSetWall
+    private StructuralWall wall;
+    public StructuralWall getSetWall
     {
         get
         {

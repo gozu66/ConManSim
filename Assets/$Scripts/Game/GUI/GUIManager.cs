@@ -4,14 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GUI_Manager : MonoBehaviour
+public class GUIManager : MonoBehaviour
 {
-    public static GUI_Manager _instance;
+    public static GUIManager _instance;
+
+    Text uiText;
+
+    void Update()
+    {
+        uiText.text = TimeManager._instance.dateTime;
+    }
+
 
     private void Awake()
     {
         if(_instance == null) { _instance = this; }
         else { Destroy(this); }
+        uiText = GetComponentInChildren<Text>();
     }
 
     public void PrimeItemBuilder(string s)
@@ -35,7 +44,7 @@ public class GUI_Manager : MonoBehaviour
     int meterialIndex = 0;
     private void RecieveInputTiles()
     {
-        Debug.Log(currenTileList.Length);
+        Debug.Log("Tiles selected to build on: " + currenTileList.Length);
 
         for (int i = 0; i < currenTileList.Length; i++)
         {
@@ -43,7 +52,7 @@ public class GUI_Manager : MonoBehaviour
             else
             {
                 //Debug.Log(currenTileList.Length);
-                ConstructionJob newCJ = new ConstructionJob(currenTileList[i].gameObject.transform.position, MaterialType.Brick, new Item_Material(Debugger._instance.construcatbleObjects[meterialIndex].gameObject, MaterialType.Brick), ConstrucatbleItem.Wall);
+                ConstructionJob newCJ = new ConstructionJob(currenTileList[i].gameObject.transform.position, MaterialType.Brick, new MaterialItem(Debugger._instance.construcatbleObjects[meterialIndex].gameObject, MaterialType.Brick), ConstrucatbleItem.Wall);
                 Debugger._instance.constructionJobQueue.Enqueue(newCJ);
             }
             meterialIndex++;

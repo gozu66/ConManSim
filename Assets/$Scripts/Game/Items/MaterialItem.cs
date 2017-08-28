@@ -12,10 +12,10 @@ public enum MaterialType                                    //Global enum for ma
 /*** Subclass of item interactable ******
 ** handles materials for construction **/
 
-public class Item_Material : Item_Haulable
+public class MaterialItem : HaulableItem
 {
     public MaterialType mat;
-    public Item_Material(GameObject materialGameobject, MaterialType mat) : base(materialGameobject)
+    public MaterialItem(GameObject materialGameobject, MaterialType mat) : base(materialGameobject)
     {
         this.mat = mat;
     }

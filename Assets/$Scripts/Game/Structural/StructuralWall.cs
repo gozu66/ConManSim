@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Structural_Wall : MonoBehaviour
+public class StructuralWall : MonoBehaviour
 {
     public MaterialType wallMaterial;
     private string materialString = "";
